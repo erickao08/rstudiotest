@@ -1,5 +1,5 @@
 ---
-title: "Rmarkdown_test"
+title: "Rmarkdown_datawrangling_excercise1"
 author: "Eric Kao"
 date: "March 2, 2017"
 output: html_document
@@ -15,8 +15,11 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+```{r refine}
+library(dplyr)
+refine<-read.csv('refine_original.csv')
+refine_df<-tbl_df(refine)
+glimpse(refine_df)
 ```
 
 ## Including Plots
