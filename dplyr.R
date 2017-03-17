@@ -21,14 +21,14 @@ refine_df['product_number']<-product_code_name[,2]
 #add categories
 #refine_df$prodcut_category[refine_df$Product.code=='x']<-'Laptop'
 refine_df<-refine_df%>%mutate(product_category = ifelse ( refine$Product.code== 'x' , 'Laptop' ,' ' ) )
-                     #ifelse(Product.code== 'x','Laptop',
-                           # ifelse(Product.code=='p','Smartphone',
-                                   #ifelse(Product.code=='v','TV',
-                                        #  ifelse(Product.code=='q','Tablet',"NA")
-                                        #  )
-                          #       #  )
-                         #   )
-     #  )#
+#ifelse(Product.code== 'x','Laptop',
+# ifelse(Product.code=='p','Smartphone',
+#ifelse(Product.code=='v','TV',
+#  ifelse(Product.code=='q','Tablet',"NA")
+#  )
+#       #  )
+#   )
+#  )#
 
 #Add full address for geocoding
 refine_df$full_address = paste (refine_df$address,refine_df$city,refine_df$country, sep = ", ", collapse = NULL)
