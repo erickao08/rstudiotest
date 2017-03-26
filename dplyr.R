@@ -20,7 +20,7 @@ refine_df['product_number']<-product_code_name[,2]
 
 #add categories
 #refine_df$prodcut_category[refine_df$Product.code=='x']<-'Laptop'
-refine_df<-refine_df%>%mutate(product_category = ifelse ( refine$Product.code== 'x' , 'Laptop' ,' ' ) )
+refine_df<-refine_df%>%mutate(product_category = ifelse ( refine_df$Product.code== 'x' , 'Laptop' , ifelse(Product.code=='p','Smartphone','')) )
 #ifelse(Product.code== 'x','Laptop',
 # ifelse(Product.code=='p','Smartphone',
 #ifelse(Product.code=='v','TV',
