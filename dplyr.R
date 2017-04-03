@@ -20,40 +20,20 @@ refine_df['product_number']<-product_code_name[,2]
 
 #add categories
 #refine_df$prodcut_category[refine_df$Product.code=='x']<-'Laptop'
-refine_df<-refine_df%>%mutate(product_category = ifelse ( refine_df$Product.code== 'x' , 'Laptop' , ifelse(Product.code=='p','Smartphone','')) )
-#ifelse(Product.code== 'x','Laptop',
-# ifelse(Product.code=='p','Smartphone',
-#ifelse(Product.code=='v','TV',
-#  ifelse(Product.code=='q','Tablet',"NA")
-#  )
-#       #  )
-#   )
-#  )#
+refine_df<-refine_df%>%mutate(product_category = ifelse ( refine$Product.code== 'x' , 'Laptop' ,ifelse(Product.code== 'x','Laptop',ifelse(Product.code=='p','Smartphone',ifelse(Product.code=='v','TV',ifelse(Product.code=='q','Tablet',"NA"))))
+))
 
 #Add full address for geocoding
 refine_df$full_address = paste (refine_df$address,refine_df$city,refine_df$country, sep = ", ", collapse = NULL)
 
 #Add company column
 refine_df<- refine_df%>%mutate(company_philips =ifelse(company=='philips',1,0))
-#refine_df$company_philips[refine_df$company=='philips']<-1
-#refine_df$company_philips[refine_df$company!='philips']<-0
 refine_df<- refine_df%>%mutate(company_akzo =ifelse(company=='akzo',1,0))
-#refine_df$company_akzo[refine_df$company=='akzo']<-1
-#refine_df$company_akzo[refine_df$company!='akzo']<-0
 refine_df<- refine_df%>%mutate(company_van_houten =ifelse(company=='van houten',1,0))
-#refine_df$company_van_houten[refine_df$company=='van houten']<-1
-#refine_df$company_van_houten[refine_df$company!='van houten']<-0
 refine_df<- refine_df%>%mutate(company_unilever =ifelse(company=='unilever',1,0))
-#refine_df$company_unilever[refine_df$company=='unilever']<-1
-#refine_df$company_unilever[refine_df$company!='unilever']<-0
 
 #Add product column
-refine_df$product_smartphone[refine_df$Product.code=='p']<-1
-refine_df$product_smartphone[refine_df$Product.code!='p']<-0
-refine_df$product_tv[refine_df$Product.code=='v']<-1
-refine_df$product_tv[refine_df$Product.code!='v']<-0
-refine_df$product_laptop[refine_df$Product.code=='x']<-1
-refine_df$product_laptop[refine_df$Product.code!='x']<-0
-refine_df$product_tablet[refine_df$Product.code=='q']<-1
-refine_df$product_tablet[refine_df$Product.code!='q']<-0
-
+refine_df<- refine_df%>%mutate(product_smartphone =ifelse(Product.code=='p',1,0))
+refine_df<- refine_df%>%mutate(product_tv =ifelse(Product.code=='v',1,0))
+refine_df<- refine_df%>%mutate(product_laptop =ifelse(Product.code=='x',1,0))
+refine_df<- refine_df%>%mutate(product_tablet =ifelse(Product.code=='q',1,0))
